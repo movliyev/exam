@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using exam.Services;
+
+@inject LayoutService service
+@{
+   Dictionary<string,string> settings = await service.GetServiceAsync();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -81,7 +88,7 @@
                     <li><a class="get-a-quote" href="get-a-quote.html">Get a Quote</a></li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a class="get-a-quote">@User.Identity.Name</a></li>
+                        <li><a asp-action="Index" asp-controller="Service" asp-route-area="Admin" class="get-a-quote">@User.Identity.Name</a></li>
                         <li><a class="get-a-quote" asp-action="Logout" asp-controller="Account" asp-route-area="Admin">LogOut</a></li>
 
                     }
@@ -108,10 +115,10 @@
                             </a>
                             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
                             <div class="social-links d-flex mt-4">
-                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="twitter"><i class="@settings["Twitter"]"></i></a>
+                        <a href="#" class="facebook"><i class="@settings["Facebook"]"></i></a>
+                        <a href="#" class="instagram"><i class="@settings["Instagram"]"></i></a>
+                        <a href="#" class="linkedin"><i class="@settings["Linkedin"]"></i></a>
                             </div>
                         </div>
 
@@ -140,11 +147,9 @@
                         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                             <h4>Contact Us</h4>
                             <p>
-                                A108 Adam Street <br>
-                                New York, NY 535022<br>
-                                United States <br><br>
-                                <strong>Phone:</strong> +1 5589 55488 55<br>
-                                <strong>Email:</strong> info@example.com<br>
+                        @settings["Adress"]<br>
+                                <strong>Phone:</strong> @settings["Phone"]<br>
+                        <strong>Email:</strong> @settings["Email"]<br>
                             </p>
 
                         </div>

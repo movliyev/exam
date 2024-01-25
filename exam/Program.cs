@@ -1,5 +1,6 @@
 using exam.DAL;
 using exam.Models;
+using exam.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.User.RequireUniqueEmail = true;
     opt.Password.RequireNonAlphanumeric = false;
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddScoped<LayoutService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

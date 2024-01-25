@@ -38,14 +38,59 @@ namespace exam.Areas.Admin.Controllers
             {
                 foreach (var item in result.Errors)
                 {
-                    ModelState.AddModelError(String.Empty,)
+                    ModelState.AddModelError(String.Empty, item.Description);
                 }
             }
+            await _signmanage.SignInAsync(user, false);
+            return RedirectToAction("Index","Home",new {area=""});   
                 
         }
         public IActionResult Login()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult>Login(LoginVM vm)
+        {
+            if(!ModelState.IsValid) return View(vm);
+            AppUser user = await _usermanage.FindByNameAsync(vm.UserNameOrEmail);
+            if (user == null)
+            {
+                user = await _usermanage.FindByEmailAsync(vm.UserNameOrEmail);
+                if (user == null)
+                {
+                    ModelState.AddModelError(String.Empty, "UserName , Email or Password incorrect");
+                }
+                return View(vm);
+            }
+            var result = await _signmanage.PasswordSignInAsync(user, vm.Password, vm.IsRemembered, true);
+            if(result.IsLockedOut)
+            {
+                ModelState.AddModelError(String.Empty, "Accoun locked,pleace try again a few minutes");
+                return View(vm);
+
+            }
+            if(!result.Succeeded)
+            {
+                ModelState.AddModelError(String.Empty, "UserName , Email or Password incorrect");
+
+                return View(vm);
+            }
+            await _signmanage.SignInAsync(user, false);
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signmanage.SignOutAsync();
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+        public async Task<IActionResult> CreateRole()
+        {
+            await _rolemanage.CreateAsync(new IdentityRole
+            {
+                Name="Admin"
+            });
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }

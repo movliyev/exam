@@ -218,9 +218,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="~/admin/pages/tables/basic-table.html">
+                        <a class="nav-link" asp-action="index" asp-controller="Service">
                             <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Tables</span>
+                            <span class="menu-title">Service Table</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="Setting">
+                            <i class="mdi mdi-grid-large menu-icon"></i>
+                            <span class="menu-title">Setting Table</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -237,11 +243,8 @@
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/login.html"> Login </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/login-2.html"> Login 2 </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/register.html"> Register </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/register-2.html"> Register 2 </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/lock-screen.html"> Lockscreen </a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="Login" asp-controller="Account"> Login </a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="Login" asp-controller="Account"> Register </a></li>
                             </ul>
                         </div>
                     </li>

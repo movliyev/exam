@@ -10866,11 +10866,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ca.r214.13\\Downloads\\exam\\exam.csproj",
+      "projectUniqueName": "C:\\Users\\ca.r214.13\\Desktop\\New folder\\exam\\exam.csproj",
       "projectName": "exam",
-      "projectPath": "C:\\Users\\ca.r214.13\\Downloads\\exam\\exam.csproj",
+      "projectPath": "C:\\Users\\ca.r214.13\\Desktop\\New folder\\exam\\exam.csproj",
       "packagesPath": "C:\\Users\\ca.r214.13\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ca.r214.13\\Downloads\\exam\\obj\\",
+      "outputPath": "C:\\Users\\ca.r214.13\\Desktop\\New folder\\exam\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ca.r214.13\\AppData\\Roaming\\NuGet\\NuGet.Config",
